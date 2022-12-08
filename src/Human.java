@@ -1,56 +1,65 @@
 public class Human {
-    int yearOfBirth;
-    String name;
-    String town;
-    String jobTitle;
+    private String name;
+    private String town;
+    private int yearOfBirth;
+    private String jobTitle;
 
-//    //    ДЗ 1 Задание 1
-//    void greet() {
-//        System.out.println(toString());
-//    }
-//
-//    //    ДЗ 1 Задание 2
-//    void greetWithJob() {
-//        System.out.println(toStringWithJob());
-//    }
+    public Human(String name, String town, int yearOfBirth, String jobTitle) {
 
-//    ДЗ 2 Задание 1
-
-
-    //    Human(int yearOfBirth, String name, String town, String jobTitle) {
-//        this.yearOfBirth = yearOfBirth;
-//        this.name = name;
-//        this.town = town;
-//        this.jobTitle = jobTitle;
-//    }
-//      ДЗ 3 Задание 1
-    Human(int yearOfBirth) {
-        this(yearOfBirth, "Информация не указана", "Информация не указана", "Информация не указана");
-    }
-
-    Human(int yearOfBirth, String name, String town, String jobTitle) {
-        if (yearOfBirth >= 0) {
-            this.yearOfBirth = yearOfBirth;
+        if (name == null || name == "") {
+            this.name = "«Информация не указана";
         } else {
-            this.yearOfBirth = Math.abs(yearOfBirth);
+            this.name = name;
         }
-        this.name = name;
-        this.town = town;
-        this.jobTitle = jobTitle;
+        if (town == null || town == "") {
+            this.town = "«Информация не указана";
+        } else {
+            this.town = town;
+        }
+        if (yearOfBirth <= 0) {
+            this.yearOfBirth = 0;
+        } else {
+            this.yearOfBirth = yearOfBirth;
+        }
+        if (jobTitle == null || jobTitle == "") {
+            this.jobTitle = "«Информация не указана";
+            if (jobTitle == " ") this.jobTitle = "Сейчас я нигде не работаю.";
+        } else {
+            this.jobTitle = jobTitle;
+        }
     }
 
-    void greetWithJob() {
-        System.out.println(toStringWithJob());
+    public String getName() {
+        return name;
+    }
+
+    public String getTown() {
+        return town;
+    }
+
+    public void setTown(String town) {
+        this.town = town;
+    }
+
+    public int getYearOfBirth() {
+        return yearOfBirth;
+    }
+
+    public void setYearOfBirth (int yearOfBirth) {
+        this.yearOfBirth = yearOfBirth;
+    }
+
+
+    public String getJobTitle() {
+        return jobTitle;
     }
 
     @Override
     public String toString() {
-        return "Привет! Меня зовут " + name + ". Я из города " + town + ". Я родился в " + yearOfBirth +
-                " году. Будем знакомы!";
-    }
-
-    public String toStringWithJob() {
-        return "Привет! Меня зовут " + name + ". Я из города " + town + ". Я родился в " + yearOfBirth +
-                " году. Я работаю на должности " + jobTitle + ". Будем знакомы!";
+        return
+                "Привет! Меня зовут " + name + ". " +
+                        "Я из города " + town + ". " +
+                        "Я родился в " + yearOfBirth + "(ом) году." + "Я работаю на должности " + jobTitle +
+                        " Будем знакомы! ";
     }
 }
